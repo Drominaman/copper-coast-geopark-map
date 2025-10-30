@@ -1,0 +1,83 @@
+/* unvisited link */
+a:link {
+    color: inherit;
+}
+
+/* visited link */
+a:visited {
+    color: inherit;
+}
+
+/* mouse over link */
+a:hover {
+    color: inherit;
+}
+
+/* selected link */
+a:active {
+    color: inherit;
+}
+
+a{
+	text-decoration: none;
+}
+p{
+	margin: 0px;
+}
+sub{
+	vertical-align: -10%;
+	font-size: 67%;
+}
+sup{
+	vertical-align: 33%;
+	font-size: 67%;
+}
+.s1{
+	background: transparent;
+}
+.p1{
+	padding-left: 0;
+	margin-top: 0;
+	padding-top: 0;
+	padding-right: 0;
+	margin-bottom: 0;
+	padding-bottom: 0;
+	font-style: normal;
+	font-weight: 400;
+	font-stretch: normal;
+	font-size: 100.000%;
+	font-family: "Helvetica Neue";
+	color: #000000;
+	letter-spacing: 0.000em;
+	font-variant: normal;
+	text-transform: none;
+	text-align: left;
+	text-indent: 0;
+	line-height: 1.091em;
+	hyphens: none;
+	-webkit-hyphens: none;
+	-webkit-text-stroke-color: initial;
+	-webkit-text-stroke-width: initial;
+	text-shadow: none;
+}
+.c1{
+	background: transparent;
+}
+.body {
+	width: 100%;
+}
+.underline {
+	text-decoration: underline;
+}
+.orientation-opposed .underline {
+	text-decoration: overline;
+}
+.strikethrough {
+	text-decoration: line-through;
+}
+.underline-strikethrough {
+	text-decoration: underline line-through;
+}
+.orientation-opposed .underline-strikethrough {
+	text-decoration: overline line-through;
+}
