@@ -3,38 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Copper Coast Geopark - Interactive Map</title>
+  <title>Interactive SVG Map</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    #map-container {
+      position: relative;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      max-width: 100%;
+    }
+
+    svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Interactive markers - invisible but clickable */
+    .interactive-marker {
+      cursor: pointer !important;
+      opacity: 0 !important;
+      pointer-events: all !important;
+    }
+
+    .interactive-marker.active {
+      /* Keep marker invisible even when active */
+      opacity: 0 !important;
+    }
+
+    /* Tooltip */
     .tooltip {
+      position: fixed;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 12px 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 10000;
       max-width: 320px;
       font-size: 14px;
       line-height: 1.5;
       display: none;
     }
- 
+
     .tooltip.show {
       display: block;
     }
- 
+
     .tooltip-title {
       font-size: 16px;
       font-weight: 600;
       margin-bottom: 6px;
       color: #1a1a1a;
     }
- 
+
     .tooltip-description {
       color: #4a4a4a;
       margin-bottom: 8px;
     }
- 
+
     .tooltip-image {
       width: 100%;
       max-width: 280px;
       border-radius: 4px;
       margin: 8px 0;
     }
- 
+
     .tooltip-link {
       color: #2563eb;
       text-decoration: underline;
@@ -153,33 +204,33 @@
 <circle xmlns="" id="marker-1" cx="88.73001578645236" cy="429.4490051269531" r="18" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="3.6"/><circle xmlns="" id="marker-2" cx="86.38043266529068" cy="530.1974531274113" r="28" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="5.6000000000000005"/><circle xmlns="" id="marker-3" cx="206.7255638590571" cy="470.0282411271377" r="19" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="3.8000000000000003"/><circle xmlns="" id="marker-4" cx="123.00475662668181" cy="678.5126810728619" r="33" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="6.6000000000000005"/><circle xmlns="" id="marker-5" cx="243.10628147543565" cy="695.3129651281622" r="25" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="5"/><circle xmlns="" id="marker-6" cx="354.8033447192803" cy="681.3201251280987" r="34" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="6.800000000000001"/><circle xmlns="" id="marker-7" cx="468.3868790230107" cy="709.3058051282259" r="25" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="5"/><circle xmlns="" id="marker-8" cx="409.6180274888607" cy="461.85835441441395" r="30" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="6"/><circle xmlns="" id="marker-9" cx="469.7861373928714" cy="381.1692690991216" r="20" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="4"/><circle xmlns="" id="marker-10" cx="546.0501742431529" cy="338.49554512653947" r="19" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="3.8000000000000003"/><circle xmlns="" id="marker-11" cx="601.3164241597786" cy="429.4490051269531" r="21" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="4.2"/><circle xmlns="" id="marker-12" cx="570.5327400228429" cy="674.3237051280668" r="23" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="4.6000000000000005"/><circle xmlns="" id="marker-13" cx="689.243917887481" cy="698.111533128175" r="32" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="6.4"/><circle xmlns="" id="marker-14" cx="823.7985049676323" cy="663.1294331280159" r="36" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="7.2"/><circle xmlns="" id="marker-15" cx="966.5317700791701" cy="686.9172611281241" r="41" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="8.200000000000001"/><circle xmlns="" id="marker-16" cx="1111.2247654352973" cy="623.2365250449986" r="31" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="6.2"/><circle xmlns="" id="marker-17" cx="830.1996166668162" cy="425.25115312693407" r="15" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="3"/><circle xmlns="" id="marker-18" cx="943.5395446255342" cy="352.4883851266031" r="37" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="7.4"/><circle xmlns="" id="marker-19" cx="827.1664049678272" cy="307.7112971263995" r="35" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="7"/><circle xmlns="" id="marker-20" cx="856.7855256941699" cy="213.95926912597307" r="23" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="4.6000000000000005"/><circle xmlns="" id="marker-21" cx="772.1259386247241" cy="190.1714411258649" r="19" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="3.8000000000000003"/><circle xmlns="" id="marker-22" cx="953.1085696410364" cy="222.58966646854964" r="15" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="3"/><circle xmlns="" id="marker-23" cx="980.6243471197155" cy="170.81615846831417" r="19" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="3.8000000000000003"/><circle xmlns="" id="marker-24" cx="644.0893420895964" cy="209.761417125954" r="21" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="4.2"/><circle xmlns="" id="marker-25" cx="107.01773440809437" cy="211.8647811535755" r="26" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="5.2"/><circle xmlns="" id="marker-26" cx="627.5329366105353" cy="64.00118778275376" r="27" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="5.4"/><circle xmlns="" id="marker-27" cx="716.8686000938432" cy="62.6019037827474" r="31" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="6.2"/><circle xmlns="" id="marker-28" cx="811.5487793258367" cy="65.40047178276012" r="35" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="7"/><circle xmlns="" id="marker-29" cx="905.7595686392948" cy="62.83659712528578" r="29" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="5.800000000000001"/><circle xmlns="" id="marker-30" cx="235.51480947601252" cy="795.3750798736083" r="32" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="6.4"/><circle xmlns="" id="marker-31" cx="782.624832091552" cy="780.2176492160768" r="47" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="9.4"/><circle xmlns="" id="marker-32" cx="557.5873795988471" cy="805.8563957908202" r="42" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="8.4"/><circle xmlns="" id="marker-33" cx="138.6406496663318" cy="88.38538846438503" r="46" fill="#3b82f6" fill-opacity="0.6" stroke="#1e40af" stroke-width="9.200000000000001"/></svg>
   </div>
   <div id="tooltip" class="tooltip"></div>
- 
+
   <script>
     const tooltipsData = [{"regionId":"marker-1","markerRadius":18,"title":"Handball Alley","description":"Stradbally’s Handball Alley, built in the early part of the Irish State’s history to facilitate local interest in handball, one of Ireland’s lesser-known national sports\n"},{"regionId":"marker-2","description":"The ruins of a large, medieval house of worship. It contains a fortified presbytery, which is believed to have been constructed in the 1200s for protection during the disputes between powerful local families.\n","title":"Ruined Medieval Church","markerRadius":28},{"regionId":"marker-3","description":"Stradbally’s Market Square is at the centre of a village that has consistently won titles and\nhigh praise in Ireland’s competitive Tidy Towns competitions for its beauty\n","title":"Market Square","markerRadius":19},{"regionId":"marker-4","markerRadius":33,"description":"The rocks at Stradbally Cove are the remains of volcanic activity from almost 500 million years ago. At low tide is a large expanse of fine-grained sand flanked by old Irish Woodland.  \n","title":"Stradbally Cove"},{"regionId":"marker-5","markerRadius":25,"title":"Ballyvooney Cove","description":"A dramatic exposure of Ordovician marine sediments that have been heavily eroded by the sea.\n"},{"regionId":"marker-6","markerRadius":34,"title":"Ballydwan Beach","description":"A beach with a spectacular vertical cliff made of red sandstone and conglomerate flanked by green volcanic rocks. The sea stack hides the remains of a 17th century mine shaft. "},{"regionId":"marker-7","markerRadius":25,"title":"Tra Na mBo Volcanics","description":"A succession of volcanic rocks including Basalt and Andestie. Look out for green and blue mineral staining in the rocks here. \n"},{"regionId":"marker-8","markerRadius":30,"title":"Miner’s cottages. ","description":"The remnants of the housing that sprung up to support the 19th-century copper mining boom in the area."},{"regionId":"marker-9","markerRadius":20,"description":"Located in an old miners church, the Copper Coast Visitor Centre features exhibitions, a café and a craft shop\n","title":"Geopark Visitor Centre"},{"regionId":"marker-10","markerRadius":19,"title":"Temperance Hall","description":"Built in 1842 to tackle alcohol problems in the mining community, The Temperance hall was later used as a famine relief centre and now serves as the village’s Catholic Church.\n"},{"regionId":"marker-11","markerRadius":21,"description":"In the 19th century, the Tankardstown Engine House was a hotspot of industrial activity. The mine shafts here descend more than 400 metres into the ground.\n","title":"Tankardstown Engine House"},{"regionId":"marker-12","markerRadius":23,"description":"Eroded into a distinctive horseshoe shape. Kilmurrin's cliff side to the east features a massive blowhole formed by undercutting from the sea. \n","title":"Kilmurrin Beach"},{"regionId":"marker-13","markerRadius":32,"description":"The headland here is made from rocks from the Tramore Limestone Formation some of which have fossils of ancient sea creatures like Trilobits.\n","title":"Dunabrattin Head"},{"regionId":"marker-14","markerRadius":36,"title":"Dunabratttin Harbour","description":"Dunabratttin Harbour provides boats with shelter from the south west gales.\n"},{"regionId":"marker-15","markerRadius":41,"description":"Kilfarrasy beach is backed with dramatic volcanic rocks formed by explosive volcanic activity 450 million years ago. \n","title":"Kilfarrasy beach"},{"regionId":"marker-16","markerRadius":31,"description":"Garrarus beach has dramatically eroded sedimentary and volcanic rocks from the Ordovican period shaped by erosion from waves and the rain. \n","title":"Garrarus beach"},{"regionId":"marker-17","markerRadius":15,"description":"The village of Annestown sits atop a hill over its namesake beach where, in the beachside car park, stands the ruin of a 19th-century lime-kiln.\n","title":"Annestown"},{"regionId":"marker-18","markerRadius":37,"description":"The Anne Valley Walk is a 9km trail through wetlands and farmland that ends at the sea\n","title":"The Anne Valley Walk"},{"regionId":"marker-19","markerRadius":35,"title":"Dunhill Castle","description":"Perched on a rocky outcrop above the River Anne. Dunhill Castle was once home to the La Poer family, it was famously betrayed during a siege after Lady Power served her soldiers buttermilk instead of beer\n"},{"regionId":"marker-20","markerRadius":23,"description":"Dunhill village was once a port for mediaeval pirates (who sacked Waterford City on occasion). It later stood against Cromwell’s forces in the 1600s.\n","title":"Dunhill village"},{"regionId":"marker-21","markerRadius":19,"description":"Ballynageeragh Portal Tomb was built in the 4th century BC and is a typical example of an Irish portal tomb. \n","title":"Ballynageeragh Portal Tomb"},{"regionId":"marker-22","markerRadius":15,"description":"The Anne Valley Walk is a 9km trail through wetlands and farmland that ends at the sea\n","title":"Anne Valley Walk"},{"regionId":"marker-23","markerRadius":19,"description":"Dunhill Eco Park is home to local crafts, food producers, and green businesses. During the week a cafe and local craft shop are working. \n","title":"Dunhill Eco Park"},{"regionId":"marker-24","markerRadius":21,"description":"The name “Kill” comes from the Irish “A Chill,” meaning “the church\". The village here dates from the medieval period.\n","title":"Kill Village"},{"regionId":"marker-25","markerRadius":26,"title":"Cormorant","description":"A cormorant is a large, dark waterbird with a long neck and hooked bill that dives underwater to catch fish and is often seen perched on rocks with its wings spread out to dry.\n"},{"regionId":"marker-26","markerRadius":27,"title":"Microgranite","description":"Microgranite is a fine-grained, intrusive igneous rock with a granite-like composition, while porphyry is a type of igneous rock.\n"},{"regionId":"marker-27","markerRadius":31,"description":"Basalt is a dark volcanic rock from cooled lava, andesite is a gray volcanic rock with intermediate silica content, tuff is compacted volcanic ash, slate is a metamorphic rock that splits into sheets, and mudstone is a fine-grained sedimentary rock made of compressed mud and clay.\n","title":"Mafic (dark) volcanic and meta sedimentary rocks"},{"regionId":"marker-28","markerRadius":35,"description":"Rhyolite is a light-colored volcanic rock with high silica content, rhyolitic tuff is compacted volcanic ash from explosive rhyolitic eruptions, and slate is a metamorphic rock formed from shale or mudstone that splits into thin, flat sheets.\n","title":"Felsic (light coloured) volcanic and meta sedimentary rocks"},{"regionId":"marker-29","markerRadius":29,"description":"Slate is a metamorphic rock that splits into sheets, and shale is a fine-grained sedimentary rock with distinct layers formed from compressed mud and clay.\n","title":"Deep marine rocks"},{"regionId":"marker-30","title":"Stitchwort","description":"A delicate wildflower with small white star-shaped petals, narrow leaves, and slender stems, commonly found in woodlands, hedgerows, and grassy areas throughout Europe.\n","markerRadius":32},{"regionId":"marker-31","description":"Sea pink (also called thrift or Armeria maritima) is a hardy coastal wildflower that forms cushion-like clumps with grass-like leaves and produces spherical clusters of pink flowers on slender stems, commonly found growing on clifftops, salt marshes, and rocky shores.\n","title":"Sea pink","markerRadius":47},{"regionId":"marker-32","markerRadius":42,"description":"Sea pink (also called thrift or Armeria maritima) is a hardy coastal wildflower that forms cushion-like clumps with grass-like leaves and produces spherical clusters of pink flowers on slender stems, commonly found growing on clifftops, salt marshes, and rocky shores.\n","title":"Sea pink"},{"regionId":"marker-33","markerRadius":46,"title":"The Copper Coast UNESCO Global Geopark","description":"The Copper Coast UNESCO Global Geopark is based around many different locations called “geosites” along the mid Waterford Coast and inland. Geosites either tell a part of the Geological story or combine the human with the geological to make combined heritage"}];
     const tooltipTrigger = 'click';
- 
+
     // Create a map for quick lookup
     const tooltipMap = new Map();
     tooltipsData.forEach(t => tooltipMap.set(t.regionId, t));
- 
+
     const tooltip = document.getElementById('tooltip');
     const svg = document.querySelector('svg');
     let activeRegionId = null;
- 
+
     // Setup interactive markers
     tooltipMap.forEach((data, regionId) => {
       const element = svg.querySelector('#' + CSS.escape(regionId));
       if (!element) return;
- 
+
       const hasTooltip = data.title || data.description || data.imageUrl;
- 
+
       if (hasTooltip || data.linkUrl) {
         element.classList.add('interactive-marker');
       }
- 
+
       function showTooltip() {
         if (!hasTooltip) return;
- 
+
         let content = '';
         if (data.title) {
           content += '<div class="tooltip-title">' + escapeHtml(data.title) + '</div>';
@@ -193,62 +244,62 @@
         if (data.linkUrl && tooltipTrigger === 'click') {
           content += '<div class="tooltip-link">Click again to visit link</div>';
         }
- 
+
         tooltip.innerHTML = content;
         tooltip.classList.add('show');
- 
+
         // Position tooltip near the region
         positionTooltip(element);
- 
+
         // Mark region as active
         element.classList.add('active');
         activeRegionId = regionId;
       }
- 
+
       function hideTooltip() {
         tooltip.classList.remove('show');
         element.classList.remove('active');
         activeRegionId = null;
       }
- 
+
       function positionTooltip(elem) {
         const rect = elem.getBoundingClientRect();
         const tooltipRect = tooltip.getBoundingClientRect();
- 
+
         // Position below the region by default
         let left = rect.left + (rect.width / 2);
         let top = rect.bottom + 10;
- 
+
         // If tooltip would go off right edge, adjust
         if (left + tooltipRect.width / 2 > window.innerWidth) {
           left = window.innerWidth - tooltipRect.width / 2 - 10;
         }
- 
+
         // If tooltip would go off left edge, adjust
         if (left - tooltipRect.width / 2 < 0) {
           left = tooltipRect.width / 2 + 10;
         }
- 
+
         // If tooltip would go off bottom, position above
         if (top + tooltipRect.height > window.innerHeight) {
           top = rect.top - tooltipRect.height - 10;
         }
- 
+
         // If tooltip would go off top, align to top
         if (top < 0) {
           top = 10;
         }
- 
+
         tooltip.style.left = left + 'px';
         tooltip.style.top = top + 'px';
         tooltip.style.transform = 'translateX(-50%)';
       }
- 
+
       if (tooltipTrigger === 'click') {
         // Click mode
         function handleClick(e) {
           e.stopPropagation();
- 
+
           // If this region is already active, handle link or close
           if (activeRegionId === regionId) {
             if (data.linkUrl) {
@@ -265,7 +316,7 @@
               }
               tooltip.classList.remove('show');
             }
- 
+
             // Show tooltip for this region
             if (hasTooltip) {
               showTooltip();
@@ -275,7 +326,7 @@
             }
           }
         }
- 
+
         element.addEventListener('click', handleClick);
       } else {
         // Hover mode
@@ -291,13 +342,13 @@
             showTooltip();
           }
         }
- 
+
         function handleMouseLeave() {
           if (hasTooltip) {
             hideTooltip();
           }
         }
- 
+
         function handleClick(e) {
           e.stopPropagation();
           // Open link if present
@@ -305,7 +356,7 @@
             window.open(data.linkUrl, '_blank');
           }
         }
- 
+
         element.addEventListener('mouseenter', handleMouseEnter);
         element.addEventListener('mouseleave', handleMouseLeave);
         if (data.linkUrl) {
@@ -313,7 +364,7 @@
         }
       }
     });
- 
+
     // Close tooltip on click outside (click mode only)
     if (tooltipTrigger === 'click') {
       document.addEventListener('click', function(e) {
@@ -329,7 +380,7 @@
         }
       });
     }
- 
+
     function escapeHtml(text) {
       const div = document.createElement('div');
       div.textContent = text;
