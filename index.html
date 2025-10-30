@@ -149,36 +149,37 @@
         bottom: 15px;
         left: 50%;
         transform: translateX(-50%) !important;
-        max-width: 60vw;
-        width: max-content;
+        max-width: 55vw;
         max-height: 25vh;
         overflow-y: auto;
         font-size: 9px;
-        padding: 4px 6px;
+        padding: 3px 5px;
         margin: 0 10px;
+        word-wrap: break-word;
       }
 
       .tooltip-title {
         font-size: 10px;
-        margin-bottom: 2px;
+        margin-bottom: 1px;
         font-weight: 600;
       }
 
       .tooltip-description {
         font-size: 8px;
         line-height: 1.2;
+        margin: 0;
       }
     }
 
     @media (max-width: 480px) {
       .tooltip {
         bottom: 10px;
-        max-width: 65vw;
-        width: max-content;
+        max-width: 60vw;
         max-height: 20vh;
-        padding: 3px 5px;
+        padding: 3px 4px;
         font-size: 8px;
         margin: 0 5px;
+        word-wrap: break-word;
       }
 
       .tooltip-title {
@@ -189,6 +190,7 @@
       .tooltip-description {
         font-size: 7px;
         line-height: 1.2;
+        margin: 0;
       }
     }
   </style>
