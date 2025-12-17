@@ -1,0 +1,200 @@
+[
+  {
+    "regionId": "marker-1",
+    "markerRadius": 18,
+    "title": "Handball Alley",
+    "description": "Stradbally’s Handball Alley, built in the early part of the Irish State’s history to facilitate local interest in handball, one of Ireland’s lesser-known national sports\n"
+  },
+  {
+    "regionId": "marker-2",
+    "description": "The ruins of a large, medieval house of worship. It contains a fortified presbytery, which is believed to have been constructed in the 1200s for protection during the disputes between powerful local families.\n",
+    "title": "Ruined Medieval Church",
+    "markerRadius": 28
+  },
+  {
+    "regionId": "marker-3",
+    "description": "Stradbally’s Market Square is at the centre of a village that has consistently won titles and\nhigh praise in Ireland’s competitive Tidy Towns competitions for its beauty\n",
+    "title": "Market Square",
+    "markerRadius": 19
+  },
+  {
+    "regionId": "marker-4",
+    "markerRadius": 33,
+    "description": "The rocks at Stradbally Cove are the remains of volcanic activity from almost 500 million years ago during the Ordovician era. At low tide is a large expanse of fine-grained sand flanked by old Irish Woodland.  \n",
+    "title": "Stradbally Cove"
+  },
+  {
+    "regionId": "marker-5",
+    "markerRadius": 25,
+    "title": "Ballyvooney Cove",
+    "description": "A dramatic exposure of Ordovician marine sediments that have been heavily eroded by the sea.\n"
+  },
+  {
+    "regionId": "marker-6",
+    "markerRadius": 34,
+    "title": "Ballydwan Beach",
+    "description": "A beach with a spectacular vertical cliff made of red sandstone and conglomerate flanked by green volcanic, Ordovician era rocks. The sea stack hides the remains of a 17th century mine shaft. "
+  },
+  {
+    "regionId": "marker-7",
+    "markerRadius": 25,
+    "title": "Tra Na mBo Volcanics",
+    "description": "A succession of volcanic rocks including Basalt and Andestie. Look out for green and blue mineral staining in the rocks here. \n"
+  },
+  {
+    "regionId": "marker-8",
+    "markerRadius": 30,
+    "title": "Miner’s cottages. ",
+    "description": "The remnants of the housing that sprung up to support the 19th-century copper mining boom in the area."
+  },
+  {
+    "regionId": "marker-9",
+    "markerRadius": 20,
+    "description": "Located in an old miners church, the Copper Coast Visitor Centre features exhibitions, a café and a craft shop\n",
+    "title": "Geopark Visitor Centre"
+  },
+  {
+    "regionId": "marker-10",
+    "markerRadius": 19,
+    "title": "Temperance Hall",
+    "description": "Built in 1842 to tackle alcohol problems in the mining community, The Temperance hall was later used as a famine relief centre and now serves as the village’s Catholic Church.\n"
+  },
+  {
+    "regionId": "marker-11",
+    "markerRadius": 21,
+    "description": "In the 19th century, the Tankardstown Engine House was a hotspot of industrial activity. The mine shafts here descend more than 400 metres into the ground.\n",
+    "title": "Tankardstown Engine House"
+  },
+  {
+    "regionId": "marker-12",
+    "markerRadius": 23,
+    "description": "Eroded into a distinctive horseshoe shape. Kilmurrin's cliff side to the east features a massive blowhole formed by undercutting from the sea. \n",
+    "title": "Kilmurrin Beach"
+  },
+  {
+    "regionId": "marker-13",
+    "markerRadius": 32,
+    "description": "The headland here is made from rocks from the Tramore Limestone Formation some of which have fossils of ancient sea creatures like Trilobites.\n",
+    "title": "Dunabrattin Head"
+  },
+  {
+    "regionId": "marker-14",
+    "markerRadius": 36,
+    "title": "Dunabratttin Harbour",
+    "description": "Dunabratttin Harbour provides boats with shelter from the south west gales.\n"
+  },
+  {
+    "regionId": "marker-15",
+    "markerRadius": 41,
+    "description": "Kilfarrasy beach is backed with dramatic volcanic rocks formed by explosive volcanic activity during the Ordovician era (over 450 million years ago) \n",
+    "title": "Kilfarrasy beach"
+  },
+  {
+    "regionId": "marker-16",
+    "markerRadius": 31,
+    "description": "Dramatic erosion of sedimentary and volcanic rocks from the Ordovican period by waves and the rain has shaped Garrarus beach as we experience it today.\n",
+    "title": "Garrarus beach"
+  },
+  {
+    "regionId": "marker-17",
+    "markerRadius": 15,
+    "description": "The village of Annestown sits atop a hill over its namesake beach where, in the beachside car park, stands the ruin of a 19th-century lime-kiln.\n",
+    "title": "Annestown"
+  },
+  {
+    "regionId": "marker-18",
+    "markerRadius": 37,
+    "description": "The Anne Valley Walk is a 9km trail through wetlands and farmland that ends at the sea\n",
+    "title": "The Anne Valley Walk"
+  },
+  {
+    "regionId": "marker-19",
+    "markerRadius": 35,
+    "title": "Dunhill Castle",
+    "description": "Perched on an outcrop of Ordovician rocks above the River Anne. Dunhill Castle was once home to the La Poer family, it was famously betrayed during a siege after Lady Power served her soldiers buttermilk instead of beer\n"
+  },
+  {
+    "regionId": "marker-20",
+    "markerRadius": 23,
+    "description": "Dunhill village was once a port for medieival pirates (who sacked Waterford City on occasion). It later stood against Cromwell’s forces in the 1600s.\n",
+    "title": "Dunhill village"
+  },
+  {
+    "regionId": "marker-21",
+    "markerRadius": 19,
+    "description": "Ballynageeragh Portal Tomb was built in the 4th century BC and is a typical example of an Irish portal tomb. \n",
+    "title": "Ballynageeragh Portal Tomb"
+  },
+  {
+    "regionId": "marker-22",
+    "markerRadius": 15,
+    "description": "The Anne Valley Walk is a 9km trail through wetlands and farmland that ends at the sea\n",
+    "title": "Anne Valley Walk"
+  },
+  {
+    "regionId": "marker-23",
+    "markerRadius": 19,
+    "description": "Dunhill Eco Park is home to local crafts, food producers, and green businesses. During the week a cafe and local craft shop are working. \n",
+    "title": "Dunhill Eco Park"
+  },
+  {
+    "regionId": "marker-24",
+    "markerRadius": 21,
+    "description": "The name “Kill” comes from the Irish “A Chill,” meaning “the church\". The village here dates from the medieval period.\n",
+    "title": "Kill Village"
+  },
+  {
+    "regionId": "marker-25",
+    "markerRadius": 26,
+    "title": "Cormorant",
+    "description": "A cormorant is a large, dark waterbird with a long neck and hooked bill that dives underwater to catch fish and is often seen perched on rocks with its wings spread out to dry.\n"
+  },
+  {
+    "regionId": "marker-26",
+    "markerRadius": 27,
+    "title": "Microgranite",
+    "description": "Microgranite is a fine-grained, intrusive igneous rock with a granite-like composition, while porphyry is a type of igneous rock.\n"
+  },
+  {
+    "regionId": "marker-27",
+    "markerRadius": 31,
+    "description": "Basalt is a dark volcanic rock from cooled lava, andesite is a gray volcanic rock with intermediate silica content, tuff is compacted volcanic ash, slate is a metamorphic rock that splits into sheets, and mudstone is a fine-grained sedimentary rock made of compressed mud and clay.\n",
+    "title": "Mafic (dark) volcanic and meta sedimentary rocks"
+  },
+  {
+    "regionId": "marker-28",
+    "markerRadius": 35,
+    "description": "Rhyolite is a light-colored volcanic rock with high silica content, rhyolitic tuff is compacted volcanic ash from explosive rhyolitic eruptions, and slate is a metamorphic rock formed from shale or mudstone that splits into thin, flat sheets.\n",
+    "title": "Felsic (light coloured) volcanic and meta sedimentary rocks"
+  },
+  {
+    "regionId": "marker-29",
+    "markerRadius": 29,
+    "description": "Slate is a metamorphic rock that splits into sheets, and shale is a fine-grained sedimentary rock with distinct layers formed from compressed mud and clay.\n",
+    "title": "Deep marine rocks"
+  },
+  {
+    "regionId": "marker-30",
+    "title": "Stitchwort",
+    "description": "A delicate wildflower with small white star-shaped petals, narrow leaves, and slender stems, commonly found in woodlands, hedgerows, and grassy areas throughout Europe.\n",
+    "markerRadius": 32
+  },
+  {
+    "regionId": "marker-31",
+    "description": "Sea pink (also called thrift or Armeria maritima) is a hardy coastal wildflower that forms cushion-like clumps with grass-like leaves and produces spherical clusters of pink flowers on slender stems, commonly found growing on clifftops, salt marshes, and rocky shores.\n",
+    "title": "Sea pink",
+    "markerRadius": 47
+  },
+  {
+    "regionId": "marker-32",
+    "markerRadius": 42,
+    "description": "Sea pink (also called thrift or Armeria maritima) is a hardy coastal wildflower that forms cushion-like clumps with grass-like leaves and produces spherical clusters of pink flowers on slender stems, commonly found growing on clifftops, salt marshes, and rocky shores.\n",
+    "title": "Sea pink"
+  },
+  {
+    "regionId": "marker-33",
+    "markerRadius": 46,
+    "title": "The Copper Coast UNESCO Global Geopark",
+    "description": "The Copper Coast UNESCO Global Geopark is based around many different locations called “geosites” along the mid Waterford Coast and inland. Geosites either tell a part of the Geological story or combine the human with the geological to make combined heritage"
+  }
+]
