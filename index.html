@@ -120,11 +120,11 @@
       background: white;
       border: 1px solid #ddd;
       border-radius: 4px;
-      padding: 8px 12px;
+      padding: clamp(6px, 1vw, 12px) clamp(8px, 1.5vw, 16px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       z-index: 10000;
-      max-width: 280px;
-      font-size: 13px;
+      max-width: clamp(180px, 20vw, 320px);
+      font-size: clamp(10px, 1.2vw, 14px);
       line-height: 1.5;
       display: none;
     }
@@ -134,28 +134,28 @@
     }
 
     .tooltip-title {
-      font-size: 13px;
+      font-size: clamp(11px, 1.3vw, 15px);
       font-weight: 600;
-      margin-bottom: 4px;
+      margin-bottom: clamp(2px, 0.5vw, 6px);
       color: #1a1a1a;
     }
 
     .tooltip-description {
       color: #4a4a4a;
-      margin-bottom: 8px;
+      margin-bottom: clamp(4px, 0.8vw, 10px);
     }
 
     .tooltip-image {
       width: 100%;
-      max-width: 280px;
+      max-width: clamp(180px, 20vw, 320px);
       border-radius: 4px;
-      margin: 8px 0;
+      margin: clamp(4px, 0.8vw, 10px) 0;
     }
 
     .tooltip-link {
       color: #2563eb;
       text-decoration: underline;
-      font-size: 11px;
+      font-size: clamp(9px, 1vw, 12px);
     }
 
     /* Navigation controls in tooltip */
@@ -619,29 +619,34 @@
       function positionTooltip(elem) {
         const rect = elem.getBoundingClientRect();
         const tooltipRect = tooltip.getBoundingClientRect();
+        const padding = 10;
 
-        // Position below the region by default
+        // Start with position below the element
         let left = rect.left + (rect.width / 2);
-        let top = rect.bottom + 10;
+        let top = rect.bottom + padding;
 
-        // If tooltip would go off right edge, adjust
-        if (left + tooltipRect.width / 2 > window.innerWidth) {
-          left = window.innerWidth - tooltipRect.width / 2 - 10;
+        // Clamp left position to keep tooltip fully on screen
+        const halfWidth = tooltipRect.width / 2;
+        left = Math.max(halfWidth + padding, Math.min(left, window.innerWidth - halfWidth - padding));
+
+        // If tooltip would go off bottom, try above
+        if (top + tooltipRect.height > window.innerHeight - padding) {
+          top = rect.top - tooltipRect.height - padding;
         }
 
-        // If tooltip would go off left edge, adjust
-        if (left - tooltipRect.width / 2 < 0) {
-          left = tooltipRect.width / 2 + 10;
+        // If still off screen (top or bottom), clamp to viewport
+        if (top < padding) {
+          top = padding;
+        }
+        if (top + tooltipRect.height > window.innerHeight - padding) {
+          top = window.innerHeight - tooltipRect.height - padding;
         }
 
-        // If tooltip would go off bottom, position above
-        if (top + tooltipRect.height > window.innerHeight) {
-          top = rect.top - tooltipRect.height - 10;
-        }
-
-        // If tooltip would go off top, align to top
-        if (top < 0) {
-          top = 10;
+        // If element is completely off screen, center tooltip in viewport
+        if (rect.right < 0 || rect.left > window.innerWidth ||
+            rect.bottom < 0 || rect.top > window.innerHeight) {
+          left = window.innerWidth / 2;
+          top = window.innerHeight / 2 - tooltipRect.height / 2;
         }
 
         tooltip.style.left = left + 'px';
